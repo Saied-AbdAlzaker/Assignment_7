@@ -12,6 +12,7 @@ export async function insertBlog(bodyData) {
     title: bodyData.title,
     description: bodyData.description,
     bookId: ObjectId.createFromHexString(bodyData.bookId),
+    bodyData,
   });
   console.log({ result });
 
@@ -30,11 +31,7 @@ export async function aggregate4(bodyData) {
     },
     {
       $project: {
-        action:1,
-        title:1,
-        author:1,
-        genres:1,
-        year:1
+        action: 1,
       },
     },
   ]);

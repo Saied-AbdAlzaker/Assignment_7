@@ -7,12 +7,12 @@ export async function createBook(bodyData) {
   return result;
 }
 
-// export async function createBookIndex(bodyData) {
-//   const result = await booksModel.createIndexes(bodyData);
-//   console.log({ result });
+export async function createBookIndex(bodyData) {
+  const result = await booksModel.createIndexes(bodyData);
+  console.log({ result });
 
-//   return result;
-// }
+  return result;
+}
 
 export async function insertBook(bodyData) {
   const result = await booksModel.insertOne(bodyData);
@@ -66,6 +66,13 @@ export async function getGenreBook(queryData) {
 
 export async function skipLimitBook() {
   const result = await booksModel.find().sort({ year: -1 }).skip(2).limit(3);
+  console.log({ result });
+
+  return result;
+}
+
+export async function yearIntBook() {
+  const result = await booksModel.find({year: { $type: 'int' }})
   console.log({ result });
 
   return result;

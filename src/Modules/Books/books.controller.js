@@ -10,10 +10,10 @@ booksRouter.post("/create", async (req, res) => {
   return res.status(201).json({ msg: "created", result });
 });
 // 4-
-// booksRouter.post("/index", async (req, res) => {
-//   const result = await booksService.createBookIndex(req.params);
-//   return res.status(201).json({ indexName: result });
-// });
+booksRouter.post("/index", async (req, res) => {
+  const result = await booksService.createBookIndex(req.body);
+  return res.status(201).json({ indexName: result });
+});
 // 5-
 booksRouter.post("", async (req, res) => {
   const result = await booksService.insertBook(req.body);
@@ -60,7 +60,7 @@ booksRouter.get("/exclude-genres", async (req, res) => {
   return res.status(201).json({ msg: "done", result });
 });
 // 15-
-booksRouter.get("/before-year", async (req, res) => {
+booksRouter.delete("/before-year", async (req, res) => {
   const result = await booksService.deleteBooks(req.query);
   return res.status(201).json({ msg: "done", result });
 });
